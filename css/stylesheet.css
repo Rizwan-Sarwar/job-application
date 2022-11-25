@@ -1,0 +1,334 @@
+* {
+    font-family: Calibri;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+input,
+select,
+textarea {
+    height: 2rem;
+    padding: 0.275rem 0.575rem;
+    color: #495057;
+    transition: .2s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: rgb(21 128 79 / 60%)!important;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(21 128 79 / 25%);
+}
+
+textarea {
+    height: 64px;
+    resize: none;
+}
+
+input[type="checkbox"]:focus {
+    box-shadow: unset;
+}
+
+input[type="checkbox"] {
+    height: auto;
+}
+
+input[type="file"] {
+    padding: 5px!important;
+    height: 36px;
+    background-color: white;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.gap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Calibri;
+}
+
+.form__wrap .cantainer {
+    width: 82%;
+    margin: 25px auto;
+    background-color: #e9ecef;
+    padding: 16px 32px;
+    border-radius: 5px;
+}
+
+.form .top__bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo__wrap img {
+    width: 85px;
+}
+
+.form__name h1 {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.section {
+    margin: 20px 0px;
+}
+
+.heading h4 {
+    background-color: #15804f;
+    color: white;
+    text-transform: capitalize;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.fields__wrap {
+    margin: 10px 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.width__divide__one {
+    grid-column: 1 / 4;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+
+.width__divide__two {
+    grid-column: 1 / 4;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.width__divide__four {
+    grid-column: 1 / 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.field .label__wrap label {
+    text-transform: capitalize;
+}
+
+.field .input__wrap input,
+.field .input__wrap select,
+.field .input__wrap textarea {
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 0px 5px;
+    font-size: 15px;
+}
+
+.checkbox__wrap {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.checkbox__wrap .input__wrap {
+    height: 15px;
+}
+
+.checkbox__wrap .label__wrap label {
+    font-size: .8rem;
+}
+
+.label__wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px 3px;
+}
+
+.checkbox__wrap .label__wrap {
+    margin: 0px;
+}
+
+
+/* if input checked then this condition is work */
+
+.field .label__wrap:has(.checkbox__wrap input[type="checkbox"]:checked)+.input__wrap input,
+.field .label__wrap:has(.checkbox__wrap input[type="checkbox"]:checked)+.input__wrap textarea {
+    cursor: default;
+    background-color: #dddddd;
+    pointer-events: none;
+}
+
+.check__this:has(.input__wrap select[name="apply__before"] option[name="Default"]:checked)~.hide__this .input__wrap input,
+.check__this:has(.input__wrap select[name="apply__before"] option[name="no"]:checked)~.hide__this .input__wrap input {
+    cursor: default;
+    background-color: #dddddd;
+    pointer-events: none;
+}
+
+.heading h4 span {
+    font-size: .9rem;
+}
+
+.add__more {
+    text-align: right;
+}
+
+.add__more a {
+    align-items: center;
+    color: #15804f;
+    font-size: 1rem;
+    justify-content: right;
+    margin: 0px 0px 5px;
+    display: inline-block;
+}
+
+.add__more a svg {
+    margin: 0px 0px -3px;
+    display: inline-block;
+}
+
+.add__more a:hover span {
+    text-decoration: underline;
+}
+
+.field select[name="apply__before"] {
+    width: 80px;
+    text-transform: capitalize;
+}
+
+.input__wrap p {
+    font-size: .75rem;
+    color: #137347;
+    padding: 0px 8px;
+}
+
+.submit__wrap {
+    text-align: center;
+}
+
+.submit__wrap a {
+    color: #fff;
+    background-color: #15804f;
+    border-color: #15804f;
+    display: inline-block;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+
+.submit__wrap a:focus {
+    color: #fff;
+    background-color: #15804f;
+    border-color: #15804f;
+    box-shadow: 0 0 0 0.2rem rgb(72 180 97 / 50%);
+}
+
+.form__footer {
+    margin: 20px 0px 0px;
+    text-align: center;
+}
+
+.form__footer p.product__by {
+    color: #15804f;
+}
+
+.error {
+    border-bottom: 1px solid red!important;
+    border-bottom-left-radius: unset!important;
+    border-bottom-right-radius: unset!important;
+}
+
+.display__block {
+    display: block!important;
+}
+
+.error__message {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin: 1rem 0px;
+    border: 1px solid #f5c6cb;
+    border-radius: 0.25rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    display: none;
+}
+
+.error__message ul.message__wrap {
+    list-style-type: disc;
+    padding: 0px 0px 0px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin: 5px 0px 0px;
+}
+
+.error__message ul.message__wrap li {
+    font-size: 14px;
+    padding: 3px 0px;
+}
+
+.error__message ul.message__wrap li span.input__name {
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.error__message h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.checkbox__wrap .label__wrap label[for="address__same"],
+.checkbox__wrap .label__wrap label[for="to__date"] {
+    cursor: pointer;
+}
+
+.add__more__mainFields .fields__wrap {
+    border-top: 1px dashed #15804f;
+    padding: 5px 0px 5px;
+}
+
+.add__more__mainFields .fields__wrap:first-child {
+    border: unset;
+}

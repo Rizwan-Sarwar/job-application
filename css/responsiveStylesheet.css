@@ -1,0 +1,159 @@
+@media (min-width: 0px) and (max-width: 1200px) {
+    .error__message ul.message__wrap {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .form__wrap .cantainer {
+        width: 90%;
+        margin: 5% auto;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 1024px) {
+    .logo__wrap img {
+        width: 65px;
+    }
+    .form__name h1 {
+        font-size: 22px;
+    }
+    .error__message h4 {
+        font-size: 14px;
+    }
+    .error__message ul.message__wrap li {
+        font-size: 13px;
+    }
+    .heading h4 {
+        font-size: 16px;
+    }
+    .fields__wrap {
+        gap: 0.5rem;
+    }
+    .field .label__wrap label {
+        font-size: 14px;
+    }
+    .field .input__wrap input,
+    .field .input__wrap select,
+    .field .input__wrap textarea {
+        font-size: 14px;
+    }
+    .checkbox__wrap .label__wrap label[for="address__same"],
+    .checkbox__wrap .label__wrap label[for="to__date"] {
+        font-size: 12px;
+    }
+    .input__wrap p {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+    .add__more a {
+        font-size: 14px;
+    }
+    .form__footer p.product__by {
+        font-size: 12px;
+    }
+    .width__divide__four,
+    .width__divide__two {
+        gap: 0.5rem;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+    .width__divide__four {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column: 1 / 2 span;
+    }
+    .checkbox__wrap .label__wrap label[for="address__same"],
+    .checkbox__wrap .label__wrap label[for="to__date"] {
+        font-size: 11px;
+    }
+    .logo__wrap img {
+        width: 55px;
+    }
+    .form__name h1 {
+        font-size: 20px;
+    }
+    .error__message ul.message__wrap {
+        grid-template-columns: 100%;
+        gap: 0px;
+        margin: 0px 0px;
+    }
+    .error__message ul.message__wrap li {
+        font-size: 12px;
+    }
+    .heading h4 {
+        font-size: 15px;
+    }
+    .field .label__wrap label {
+        font-size: 13px;
+    }
+    .field .input__wrap input,
+    .field .input__wrap select,
+    .field .input__wrap textarea {
+        font-size: 13px;
+    }
+    .fields__wrap {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .width__divide__two {
+        grid-column: 1 / 2 span;
+    }
+    .heading h4 span {
+        font-size: 11px;
+    }
+    .width__divide__one {
+        grid-column: 1 / 2 span;
+    }
+    .field.check__this {
+        grid-column: 1 / 2 span;
+    }
+    .field.check__this select {
+        width: 100%;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 568px) {
+    .form__wrap .cantainer {
+        width: 95%;
+        margin: 2.5% auto;
+        padding: 10px;
+    }
+    .logo__wrap img {
+        width: 45px;
+    }
+    .form__name h1 {
+        font-size: 18px;
+    }
+    .heading h4 {
+        font-size: 15px;
+        padding: 8px;
+    }
+    .fields__wrap {
+        grid-template-columns: 100%;
+    }
+    .width__divide__four {
+        grid-template-columns: 100%;
+        grid-column: unset;
+    }
+    .width__divide__two {
+        grid-column: unset;
+        grid-template-columns: 100%;
+    }
+    .width__divide__one {
+        grid-column: unset;
+        width: 100%;
+    }
+    .field.check__this {
+        grid-column: unset;
+    }
+    .add__more a {
+        font-size: 13px;
+    }
+    .field .width__divide__two {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .heading h4 span {
+        display: none;
+    }
+    .submit__wrap a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
