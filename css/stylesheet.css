@@ -12,6 +12,7 @@ textarea {
     padding: 0.275rem 0.575rem;
     color: #495057;
     transition: .2s ease-in-out;
+    background-color: #fff;
 }
 
 input:focus,
