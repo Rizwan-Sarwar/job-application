@@ -1,3 +1,20 @@
+// Initialize Firebase (ADD YOUR OWN DATA)
+const firebaseConfig = {
+    apiKey: "AIzaSyA34ObqqVeigC6pUtm5jlGyx9bfZdHO-iM",
+    authDomain: "jobapplication-ce2c2.firebaseapp.com",
+    databaseURL: "https://jobapplication-ce2c2-default-rtdb.firebaseio.com",
+    projectId: "jobapplication-ce2c2",
+    storageBucket: "jobapplication-ce2c2.appspot.com",
+    messagingSenderId: "347109503423",
+    appId: "1:347109503423:web:1c1a01f7456e7fc55fb10a",
+    measurementId: "G-BVZS0WWSYS"
+};
+
+firebase.initializeApp(firebaseConfig);
+// Reference messages collection
+var messagesRef = firebase.database().ref('applicant');
+
+
 // form submit
 document.addEventListener("keypress", event => {
     event.key === "Enter" ? [event.preventDefault(), document.getElementById("formSubmit").click()] : ""
@@ -58,226 +75,256 @@ const formValidation = () => {
     var apply__before__date = document.job__application.apply__before__date;
     var apply__before__position = document.job__application.apply__before__position;
     var resume = document.job__application.resume;
+    var picture = document.job__application.picture;
 
     // all letter
     if (allLetter(name, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.name = name.value;
     }
     if (allLetter(father__spouse, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.father__spouse = father__spouse.value;
     }
     if (allLetter(nationality, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.nationality = nationality.value;
     }
     if (allLetter(city, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.city = city.value;
     }
     if (allLetter(degree, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.degree = degree.value;
     }
     if (allLetter(board__institution, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.board__institution = board__institution.value;
     }
     if (allLetter(job__position, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.job__position = job__position.value;
     }
     if (allLetter(field__of__interest, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.field__of__interest = field__of__interest.value;
     }
     // all select option
     if (selectOptions(gender, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.gender = gender.value;
     }
     if (selectOptions(marital__status, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.marital__status = marital__status.value;
     }
     if (selectOptions(country, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.country = country.value;
     }
     if (selectOptions(acquired__in_year, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.acquired__in_year = acquired__in_year.value;
     }
     if (selectOptions(acquired__in_month, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.acquired__in_month = acquired__in_month.value;
     }
     if (selectOptions(result, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.result = result.value;
     }
     // phone number
     if (phoneNumbers(mobile__no, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.mobile__no = mobile__no.value;
     }
     // all date time
     if (dateTime(date__of__birth, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.date__of__birth = date__of__birth.value;
     }
     // all zip code
     if (zipCode(postal__code, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.postal__code = postal__code.value;
     }
     // all CNIC
     if (CNIC__Check(cnic__number, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.cnic__number = cnic__number.value;
     }
     // all letter and numbers 
     if (addressCheck(current__address, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.current__address = current__address.value;
     }
     if (addressCheck(result__number, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.result__number = result__number.value;
     }
     // all emails check
     if (emailCheck(email__address, error)) {
-        console.log("applicant name is not be empty");
+        applicantData.email__address = email__address.value;
     }
     // resume check
     if (resumeCheck(resume, error)) {
-        console.log("applicant name is not be empty");
+        uploadFiles("applicant_resume", resume.files[0])
     }
     errorMessage(error__wrap, error)
+    applicantData.landline__no = landline__no.value == "" ? "null" : landline__no.value;
+    applicantData.permanent__address = permanent__address.value == "" ? "null" : permanent__address.value;
+    applicantData.country__two = country__two.value == "" ? "null" : country__two.value;
+    applicantData.city__two = city__two.value == "" ? "null" : city__two.value;
+    applicantData.postal__code__two = postal__code__two.value == "" ? "null" : postal__code__two.value;
+    applicantData.employer = employer.value == "" ? "null" : employer.value;
+    applicantData.initial__position = initial__position.value == "" ? "null" : initial__position.value;
+    applicantData.last__position = last__position.value == "" ? "null" : last__position.value;
+    applicantData.department = department.value == "" ? "null" : department.value;
+    applicantData.from = from.value == "" ? "null" : from.value;
+    applicantData.to = to.value == "" ? "null" : to.value;
+    applicantData.training = training.value == "" ? "null" : training.value;
+    applicantData.institute = institute.value == "" ? "null" : institute.value;
+    applicantData.training__from__year = training__from__year.value == "" ? "null" : training__from__year.value;
+    applicantData.training__from__month = training__from__month.value == "" ? "null" : training__from__month.value;
+    applicantData.training__to__year = training__to__year.value == "" ? "null" : training__to__year.value;
+    applicantData.training__to__month = training__to__month.value == "" ? "null" : training__to__month.value;
+    applicantData.skill = skill.value == "" ? "null" : skill.value;
+    applicantData.skill__acquired_year = skill__acquired_year.value == "" ? "null" : skill__acquired_year.value;
+    applicantData.skill__acquired_month = skill__acquired_month.value == "" ? "null" : skill__acquired_month.value;
+    applicantData.apply__before = apply__before.value == "" ? "null" : apply__before.value;
+    applicantData.apply__before__date = apply__before__date.value == "" ? "null" : apply__before__date.value;
+    applicantData.apply__before__position = apply__before__position.value == "" ? "null" : apply__before__position.value;
+    imageCheck(picture)
+
+    // InsertData(applicantData)
+    let mainFields = [
+        name, father__spouse, nationality, city, degree, board__institution, job__position, field__of__interest, gender, marital__status, country, acquired__in_year, acquired__in_month, result, mobile__no, date__of__birth, postal__code, cnic__number, current__address, result__number, email__address, resume, picture
+    ]
+    mainFieldsCheck(mainFields, applicantData)
     return false
 }
 
-// only alphabetic character check
-const allLetter = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
+// alphabetic character fields check
+const allLetter = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
     var letters = /^[A-Z a-z]+$/;
-    if (applicant__name.value.trim().match(letters)) {
+    if (input.value.trim().match(letters)) {
+        return true;
+    } else {
+        input.classList.add("error");
+        let create__error = document.createElement("li");
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        error.appendChild(create__error);
+        input.value = "";
+        return false;
+    }
+}
+
+// select fields check
+const selectOptions = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
+    if (input.value != "null") {
         return true
     } else {
-        applicant__name.classList.add("error");
+        input.classList.add("error");
         let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
         error.appendChild(create__error);
-        applicant__name.value = "";
         return false
     }
 }
 
-// only select options check
-const selectOptions = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
-    if (applicant__name.value != "Default") {
-        return true
-    } else {
-        applicant__name.classList.add("error");
-        let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
-        error.appendChild(create__error);
-        return false
-    }
-}
-
-// only phone Numbers check
-const phoneNumbers = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
+// phone number fields check
+const phoneNumbers = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
     var letters = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-    if (applicant__name.value.match(letters)) {
+    if (input.value.match(letters)) {
         return true
     } else {
-        applicant__name.classList.add("error");
+        input.classList.add("error");
         let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
         error.appendChild(create__error);
-        applicant__name.value = "";
+        input.value = "";
         return false
     }
 }
 
-// only date time mm/dd/yyyy check
-const dateTime = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
-    // var letters = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-    // var letters = /^\d{2}\/\d{2}\/\d{4}$/;
-    if (applicant__name.value != "") {
+// datetime fields check
+const dateTime = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
+    if (input.value != "") {
         return true
     } else {
-        applicant__name.classList.add("error");
+        input.classList.add("error");
         let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
         error.appendChild(create__error);
-        applicant__name.value = "";
+        input.value = "";
         return false
     }
 }
 
-// only zip code check
-const zipCode = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
+// zip code fields check
+const zipCode = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
     var letters = /^[0-9]+$/;
-    if (applicant__name.value.trim().match(letters)) {
+    if (input.value.trim().match(letters)) {
         return true
     } else {
-        applicant__name.classList.add("error");
+        input.classList.add("error");
         let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
         error.appendChild(create__error);
-        applicant__name.value = "";
+        input.value = "";
         return false
     }
 }
 
-// only CNIC check
-const CNIC__Check = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
+// CNIC fields check
+const CNIC__Check = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
     var letters = /^[0-9]{5}-[0-9]{7}-[0-9]$/;
-    if (applicant__name.value.trim().match(letters)) {
+    if (input.value.trim().match(letters)) {
         return true
     } else {
-        applicant__name.classList.add("error");
+        input.classList.add("error");
         let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
         error.appendChild(create__error);
-        applicant__name.value = "";
+        input.value = "";
         return false
     }
 }
 
-// only address check
-const addressCheck = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
+// address fields check
+const addressCheck = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
     // var letters = /^[0-9a-zA-Z]+$/;
-    if (applicant__name.value != "") {
+    if (input.value != "") {
         return true
     } else {
-        applicant__name.classList.add("error");
+        input.classList.add("error");
         let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
         error.appendChild(create__error);
-        applicant__name.value = "";
+        input.value = "";
         return false
     }
 }
 
-// only email address check
-const emailCheck = (applicant__name, error) => {
-    applicant__name.classList.contains("error") ? applicant__name.classList.remove("error") : "";
+// email fields check
+const emailCheck = (input, error) => {
+    input.classList.contains("error") ? input.classList.remove("error") : "";
     var letters = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (applicant__name.value.trim().match(letters)) {
+    if (input.value.trim().match(letters)) {
         return true
     } else {
-        applicant__name.classList.add("error");
+        input.classList.add("error");
         let create__error = document.createElement("li");
-        create__error.setAttribute("name", applicant__name.name);
-        create__error.innerHTML = `<span class="input__name">${applicant__name.name.split('__').join(" ")}</span> : Please fill out this field.`;
+        create__error.setAttribute("name", input.name);
+        create__error.innerHTML = `<span class="input__name">${input.name.split('__').join(" ")}</span> : Please fill out this field.`;
         error.appendChild(create__error);
-        applicant__name.value = "";
+        input.value = "";
         return false
     }
 }
 
-// only resume (cv) check
+// resume fields check
 const resumeCheck = (resume, error) => {
     resume.classList.contains("error") ? resume.classList.remove("error") : "";
     // allowing file type
-    var allowedExtensions = /(\.pdf|\.doc|\.docx)$/i;
+    // var allowedExtensions = /(\.pdf|\.doc|\.docx)$/i;
+    var allowedExtensions = /(\.pdf)$/i;
     if (allowedExtensions.exec(resume.value)) {
         return true
     } else {
@@ -289,6 +336,55 @@ const resumeCheck = (resume, error) => {
         resume.value = "";
         return false
     }
+}
+
+// image fields check
+const imageCheck = (picture) => {
+    // allowing file type
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    if (allowedExtensions.exec(picture.value)) {
+        uploadFiles("applicant_picture", picture.files[0])
+    } else {
+        picture.value = "null";
+    }
+}
+
+// file upload
+let uploadFiles = (folder, file) => {
+    debugger
+    const uuidv4 = () => {
+        return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+    }
+    let uniqueID = uuidv4()
+    folder == "applicant_resume" ? applicantData.resumeID = uniqueID : applicantData.pictureID = uniqueID;
+    // applicantData.pictureID = uniqueID;
+    return new Promise((resolve, reject) => {
+        let storageRef = firebase.storage().ref(`${folder}/${uniqueID}`);
+        let uploading = storageRef.put(file)
+        uploading.on('state_changed',
+            (snapshot) => {
+                switch (snapshot.state) {
+                    case firebase.storage.TaskState.PAUSED:
+                        console.log('Upload is paused');
+                        break;
+                    case firebase.storage.TaskState.RUNNING:
+                        console.log('Upload is running');
+                        break;
+                }
+            },
+            (error) => {
+                reject(error)
+            },
+            () => {
+                uploading.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    resolve(downloadURL)
+                });
+            }
+        );
+    })
+
 }
 
 // check if error list is empty than hide this element
@@ -330,7 +426,7 @@ const addMore = (ele) => {
             </div>
             <div class="input__wrap width__divide__two">
                 <select id="" class="valid">
-                    <option value="Default">select</option>
+                    <option value="null">select</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
@@ -384,19 +480,19 @@ const addMore = (ele) => {
                     <option value="1972">1972</option>
                 </select>
                 <select id="" class="valid">
-                    <option value="Default">select</option>
-                    <option value="01">Jan</option>
-                    <option value="02">Feb</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Apr</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Aug</option>
-                    <option value="09">Sep</option>
-                    <option value="10">Oct</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dec</option>
+                    <option value="null">select</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
                 </select>
             </div>
         </div>
@@ -407,7 +503,7 @@ const addMore = (ele) => {
             </div>
             <div class="input__wrap width__divide__two">
                 <select id="" class="valid">
-                    <option value="Default">select</option>
+                    <option value="null">select</option>
                     <option value="grade">grade</option>
                     <option value="division">division</option>
                     <option value="age">%Age</option>
@@ -508,7 +604,7 @@ const addMore = (ele) => {
             </div>
             <div class="input__wrap width__divide__two">
                 <select name="training__from__year" id="">
-                    <option value="Default">select</option>
+                    <option value="null">select</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
@@ -562,19 +658,19 @@ const addMore = (ele) => {
                     <option value="1972">1972</option>
                 </select>
                 <select name="training__from__month" id="">
-                    <option value="Default">select</option>
-                    <option value="01">Jan</option>
-                    <option value="02">Feb</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Apr</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Aug</option>
-                    <option value="09">Sep</option>
-                    <option value="10">Oct</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dec</option>
+                    <option value="null">select</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
                 </select>
             </div>
         </div>
@@ -585,7 +681,7 @@ const addMore = (ele) => {
             </div>
             <div class="input__wrap width__divide__two">
                 <select name="training__to__year" id="">
-                    <option value="Default">select</option>
+                    <option value="null">select</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
@@ -639,19 +735,19 @@ const addMore = (ele) => {
                     <option value="1972">1972</option>
                 </select>
                 <select name="training__to__month" id="">
-                    <option value="Default">select</option>
-                    <option value="01">Jan</option>
-                    <option value="02">Feb</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Apr</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Aug</option>
-                    <option value="09">Sep</option>
-                    <option value="10">Oct</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dec</option>
+                    <option value="null">select</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
                 </select>
             </div>
         </div>
@@ -677,7 +773,7 @@ const addMore = (ele) => {
             </div>
             <div class="input__wrap width__divide__two">
                 <select name="skill__acquired_year" id="">
-                    <option value="Default">select</option>
+                    <option value="null">select</option>
                     <option value="2022">2022</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
@@ -731,23 +827,144 @@ const addMore = (ele) => {
                     <option value="1972">1972</option>
                 </select>
                 <select name="skill__acquired_month" id="">
-                    <option value="Default">select</option>
-                    <option value="01">Jan</option>
-                    <option value="02">Feb</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Apr</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Aug</option>
-                    <option value="09">Sep</option>
-                    <option value="10">Oct</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dec</option>
+                    <option value="null">select</option>
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="Mar">Mar</option>
+                    <option value="Apr">Apr</option>
+                    <option value="May">May</option>
+                    <option value="Jun">Jun</option>
+                    <option value="Jul">Jul</option>
+                    <option value="Aug">Aug</option>
+                    <option value="Sep">Sep</option>
+                    <option value="Oct">Oct</option>
+                    <option value="Nov">Nov</option>
+                    <option value="Dec">Dec</option>
                 </select>
             </div>
         </div>
         `
     }
     fields.appendChild(newFields)
+}
+
+// applicant data collect in { applicantData }
+const applicantData = {}
+// second validation if all required fields are not empty then send to the database 
+const mainFieldsCheck = (fields, applicantData) => {
+    debugger
+    let fieldsValidationCheck = () => {
+        for (var i = 0; i < fields.length; i++) {
+            if (fields[i].value == "" || fields[i].value == "null") {
+                return true
+            }
+        }
+    }
+    if (fieldsValidationCheck()) {
+        console.log("Some importent fields are empty ://")
+    }
+    else {
+        let newMessageRef = messagesRef.push();
+        applicantData.id = newMessageRef.key;
+        newMessageRef.set(applicantData)
+            .then(() => {
+                console.log("Data added successfully :)");
+                let msgBoxWrap = document.createElement("div");
+                msgBoxWrap.setAttribute("class", "data__msg");
+                msgBoxWrap.setAttribute("onclick", "msgBoxRemove()");
+                let msgBox =
+                    `
+                <div class="close__wrap">
+                    <span class="close__box">x</span>
+                </div>
+                <div class="msg__wrao">
+                    <p class="box__msg">application added seccussfully</p>
+                </div>
+            `
+                msgBoxWrap.innerHTML = msgBox
+                document.querySelector("body").appendChild(msgBoxWrap);
+                // Hide after 2 seconds
+                setTimeout(function () {
+                    document.querySelector('.data__msg').style.display = 'none';
+                }, 2000);
+            })
+            .catch((error) => {
+                console.log(error);
+                let msgBoxWrap = document.createElement("div");
+                msgBoxWrap.setAttribute("class", "data__msg");
+                msgBoxWrap.setAttribute("onclick", "msgBoxRemove()");
+                let msgBox =
+                    `
+                <div class="close__wrap">
+                    <span class="close__box">x</span>
+                </div>
+                <div class="msg__wrao">
+                    <p class="box__msg">please try again</p>
+                </div>
+            `
+                msgBoxWrap.innerHTML = msgBox
+                document.querySelector("body").appendChild(msgBoxWrap);
+                // Hide after 2 seconds
+                setTimeout(function () {
+                    document.querySelector('.data__msg').style.display = 'none';
+                }, 2000);
+            })
+    }
+}
+const msgBoxRemove = () => {
+    document.querySelector(".close__box").parentElement.parentElement.remove()
+}
+// if window.location.pathname is candidates then get data from database
+document.querySelector("body").onload = () => {
+    if (window.location.pathname === "/candidates.html") {
+        console.log("window location pathname = candidates.html")
+        messagesRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            for (let object in data) {
+                // firebase.database().ref('applicant').on('value', (snapshot) => {
+                //     const data = snapshot.val()
+                //     firebase.storage().ref().child(`applicant_picture/${data['-NJFBfet_Hd2PZxh_Fwu'].pictureID}`).getMetadata()
+                //         .then((metadata) => {
+                //             console.log("resolve local", metadata.downloadURLs[0])
+                //         })
+                //         .catch((error) => {
+                //             console.log("reject local", error)
+                //         })
+                // })
+                let pictureFind = (picture, dataID) => {
+                    firebase.storage().ref(`applicant_picture/${picture}`).getDownloadURL()
+                        .then((url) => {
+                            let ele = document.querySelector(`[data-id="${dataID}"]`);
+                            ele.querySelector(".candidate__image").src = url
+                            console.log("resolve")
+                        })
+                        .catch((error) => {
+                            console.log("reject", error)
+                        });
+                }
+
+                let dataID = data[object].id;
+                pictureFind(data[object].pictureID, data[object].id)
+                let applicantMin =
+                    `
+                    <div class="candidate" data-id=${dataID}>
+                        <div class="image__wrap">
+                            <img class="candidate__image" src="images/avatar.png" alt="candidate__image">
+                        </div>
+                        <div class="name__wrap">
+                            <p class="candidate__name">${data[object].name}</p>
+                        </div>
+                        <div class="job_tittle__wrap">
+                            <p class="job__title">${data[object].job__position}</p>
+                        </div>
+                        <div class="details__btn">
+                            <a href="##">view details</a>
+                        </div>
+                    </div>
+                `;
+                let applicantWrap = document.querySelector(".candidates__wrap");
+                applicantWrap.innerHTML += applicantMin
+            }
+        });
+    }
 }
