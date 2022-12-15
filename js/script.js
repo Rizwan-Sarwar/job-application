@@ -916,7 +916,7 @@ const msgBoxRemove = () => {
 }
 // if window.location.pathname is candidates then get data from database
 document.querySelector("body").onload = () => {
-    if (window.location.pathname === "/candidates.html") {
+    if (window.location.pathname === "/job-application/candidates.html") {
         console.log("window location pathname = candidates.html")
         messagesRef.on('value', (snapshot) => {
             const data = snapshot.val();
