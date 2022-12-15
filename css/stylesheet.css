@@ -13,6 +13,10 @@ textarea {
     color: #495057;
     transition: .2s ease-in-out;
     background-color: #fff;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 0px 10px;
+    font-size: 15px;
 }
 
 input:focus,
@@ -20,7 +24,7 @@ select:focus,
 textarea:focus {
     color: #495057;
     background-color: #fff;
-    border-color: rgb(21 128 79 / 60%)!important;
+    border-color: rgb(21 128 79 / 60%) !important;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(21 128 79 / 25%);
 }
@@ -39,7 +43,7 @@ input[type="checkbox"] {
 }
 
 input[type="file"] {
-    padding: 5px!important;
+    padding: 5px !important;
     height: 36px;
     background-color: white;
 }
@@ -80,7 +84,7 @@ body {
     font-family: Calibri;
 }
 
-.form__wrap .cantainer {
+.cantainer {
     width: 82%;
     margin: 25px auto;
     background-color: #e9ecef;
@@ -275,13 +279,13 @@ body {
 }
 
 .error {
-    border-bottom: 1px solid red!important;
-    border-bottom-left-radius: unset!important;
-    border-bottom-right-radius: unset!important;
+    border-bottom: 1px solid red !important;
+    border-bottom-left-radius: unset !important;
+    border-bottom-right-radius: unset !important;
 }
 
 .display__block {
-    display: block!important;
+    display: block !important;
 }
 
 .error__message {
@@ -332,4 +336,170 @@ body {
 
 .add__more__mainFields .fields__wrap:first-child {
     border: unset;
+}
+
+/* .all__candidates {
+    background-color: #e9ecef;
+    background-color: #f5f6fd;
+} */
+
+.all__candidates .cantainer {
+    width: 82%;
+    margin: 0px auto;
+    padding: 16px 32px;
+    border-radius: 5px;
+}
+
+.filter__bar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.filter__bar .field__wrap {
+    display: flex;
+    gap: 15px;
+}
+
+.filter__bar .field__wrap input {
+    width: 220px;
+}
+
+.filter__bar .filter__btn a {
+    text-transform: capitalize;
+    background-color: #15804f;
+    color: white;
+    display: flex;
+    height: 32px;
+    width: 80px;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: .3px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 5px rgb(21 128 79 / 20%);
+    transition: .2s ease-in-out;
+}
+
+.filter__bar .filter__btn a:hover {
+    box-shadow: 0px 4px 5px rgb(21 128 79 / 20%);
+}
+
+.candidates__wrap {
+    margin: 100px 0px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+}
+
+.candidates__wrap .candidate {
+    text-align: center;
+    background-color: white;
+    padding: 35px 15px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    overflow: hidden;
+}
+
+.candidate img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+}
+
+.candidate .name__wrap p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 0px 0px;
+    color: black;
+    text-shadow: 0 0 0 black;
+}
+
+.candidate .job_tittle__wrap p {
+    color: rgb(0 0 0 / 50%);
+    font-size: 12px;
+    margin: 5px 0px 0px;
+}
+
+.candidate .details__btn a {
+    display: inline-block;
+    background-color: rgb(21 128 79 / 10%);
+    color: #15804f;
+    text-transform: capitalize;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin: 9px 0px 0px;
+    transition: .2s ease-in-out;
+}
+
+.candidates__wrap .candidate:hover {
+    border: 1px solid #eaeaed;
+}
+
+.candidates__wrap .candidate:hover .details__btn a {
+    color: white;
+    background-color: rgb(21 128 79);
+    box-shadow: 4px 5px 0 rgb(21 128 79 / 10%);
+}
+
+.data__msg {
+    position: fixed;
+    right: 10px;
+    bottom: 25px;
+    background-color: #15804f;
+    padding: 5px 10px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.data__msg .close__wrap {
+    border-bottom: 1px solid white;
+}
+
+.data__msg span {
+    display: flex;
+    width: 20px;
+    font-size: 18px;
+    margin: 0px 0px 5px auto;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.data__msg span:hover {
+    color: #c5c5c5;
+}
+
+.data__msg p {
+    font-size: 12px;
+    text-transform: capitalize;
+    margin: 5px 0px 0px;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 15px;
+}
+
+.navbar ul a {
+    text-transform: capitalize;
+    color: white;
+    background-color: #15804f;
+    border: 1px solid #15804f;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 14px;
+    display: inline-block;
+    transition: .2s ease-in-out;
+}
+
+.navbar ul a:hover {
+    background-color: white;
+    color: #15804f;
 }
