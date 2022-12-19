@@ -149,9 +149,7 @@ const formValidation = () => {
         applicantData.email__address = email__address.value;
     }
     // resume check
-    if (resumeCheck(resume, error)) {
-        uploadFiles("applicant_resume", resume.files[0])
-    }
+    if (resumeCheck(resume, error)) { }
     errorMessage(error__wrap, error)
     applicantData.landline__no = landline__no.value == "" ? "null" : landline__no.value;
     applicantData.permanent__address = permanent__address.value == "" ? "null" : permanent__address.value;
@@ -180,7 +178,7 @@ const formValidation = () => {
 
     // InsertData(applicantData)
     let mainFields = [
-        name, father__spouse, nationality, city, degree, board__institution, job__position, field__of__interest, gender, marital__status, country, acquired__in_year, acquired__in_month, result, mobile__no, date__of__birth, postal__code, cnic__number, current__address, result__number, email__address, resume, picture
+        name, father__spouse, nationality, city, degree, board__institution, job__position, field__of__interest, gender, marital__status, country, acquired__in_year, acquired__in_month, result, mobile__no, date__of__birth, postal__code, cnic__number, current__address, result__number, email__address, resume
     ]
     mainFieldsCheck(mainFields, applicantData)
     return false
@@ -342,16 +340,14 @@ const resumeCheck = (resume, error) => {
 const imageCheck = (picture) => {
     // allowing file type
     var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-    if (allowedExtensions.exec(picture.value)) {
-        uploadFiles("applicant_picture", picture.files[0])
-    } else {
-        picture.value = "null";
+    if (allowedExtensions.exec(picture.value)) { }
+    else {
+        picture.value = '';
     }
 }
 
 // file upload
 let uploadFiles = (folder, file) => {
-    debugger
     const uuidv4 = () => {
         return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
             (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -376,6 +372,7 @@ let uploadFiles = (folder, file) => {
             },
             (error) => {
                 reject(error)
+                delete applicantData.pictureID;
             },
             () => {
                 uploading.snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -852,7 +849,6 @@ const addMore = (ele) => {
 const applicantData = {}
 // second validation if all required fields are not empty then send to the database 
 const mainFieldsCheck = (fields, applicantData) => {
-    debugger
     let fieldsValidationCheck = () => {
         for (var i = 0; i < fields.length; i++) {
             if (fields[i].value == "" || fields[i].value == "null") {
@@ -864,6 +860,13 @@ const mainFieldsCheck = (fields, applicantData) => {
         console.log("Some importent fields are empty ://")
     }
     else {
+        debugger
+        let resume = document.job__application.resume;
+        let picture = document.job__application.picture;
+        uploadFiles("applicant_resume", resume.files[0])
+        if (picture.value != "") {
+            uploadFiles("applicant_picture", picture.files[0])
+        }
         let newMessageRef = messagesRef.push();
         applicantData.id = newMessageRef.key;
         newMessageRef.set(applicantData)
@@ -921,16 +924,6 @@ document.querySelector("body").onload = () => {
         messagesRef.on('value', (snapshot) => {
             const data = snapshot.val();
             for (let object in data) {
-                // firebase.database().ref('applicant').on('value', (snapshot) => {
-                //     const data = snapshot.val()
-                //     firebase.storage().ref().child(`applicant_picture/${data['-NJFBfet_Hd2PZxh_Fwu'].pictureID}`).getMetadata()
-                //         .then((metadata) => {
-                //             console.log("resolve local", metadata.downloadURLs[0])
-                //         })
-                //         .catch((error) => {
-                //             console.log("reject local", error)
-                //         })
-                // })
                 let pictureFind = (picture, dataID) => {
                     firebase.storage().ref(`applicant_picture/${picture}`).getDownloadURL()
                         .then((url) => {
@@ -947,7 +940,7 @@ document.querySelector("body").onload = () => {
                 pictureFind(data[object].pictureID, data[object].id)
                 let applicantMin =
                     `
-                    <div class="candidate" data-id=${dataID}>
+                    <div class="candidate" data-id=${dataID} onclick="getDetail(this)">
                         <div class="image__wrap">
                             <img class="candidate__image" src="images/avatar.png" alt="candidate__image">
                         </div>
@@ -967,4 +960,8 @@ document.querySelector("body").onload = () => {
             }
         });
     }
+}
+let getDetail = (getID) => {
+    localStorage.setItem("candidateID", getID.dataset.id);
+    window.location.pathname = "/job-application/candidate_details.html";
 }
