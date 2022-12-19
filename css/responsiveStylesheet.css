@@ -5,7 +5,6 @@
 
     .cantainer {
         width: 90% !important;
-        margin: 5% auto;
     }
 }
 
@@ -71,6 +70,17 @@
         margin: 50px 0px;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
+    }
+
+    .candidate__details .cantainer {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 415px auto;
+    }
+
+    .candidate__details .cantainer .box.rs__lg {
+        grid-column: 2 / 2 span;
+        grid-row: 1 / 2 span;
+        height: fit-content;
     }
 }
 
@@ -188,12 +198,30 @@
     .filter__bar .filter__btn a {
         margin-left: auto;
     }
+
+    .candidate__details .cantainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: unset;
+    }
+
+    .candidate__details .cantainer .box.rs__lg {
+        grid-column: unset;
+        grid-row: unset;
+    }
+
+    .cantainer {
+        margin: 15px auto;
+    }
+
+    body.candidate_details__wrap .actionBtn__wrap .cantainer {
+        margin: -15px auto 0px;
+    }
 }
 
 @media (min-width: 0px) and (max-width: 568px) {
     .cantainer {
         width: 95% !important;
-        margin: 2.5% auto;
+        margin: 10px auto;
         padding: 10px;
     }
 
@@ -266,6 +294,42 @@
 
     .candidates__wrap .candidate {
         padding: 35px 10px;
+    }
+
+    body.candidate_details__wrap .actionBtn__wrap .cantainer a.action__btn {
+        padding: 8px 10px;
+    }
+
+    .candidate__details .cantainer .box .candidate__profile .image__wrap img {
+        padding: 1px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .candidate__details .cantainer .box .candidate__profile .select__wrap select {
+        margin: 15px 0px 0px;
+        height: 36px;
+    }
+
+    .rs__data__wrap .pairData .key__wrap p {
+        font-size: 13px;
+        color: black;
+        font-weight: 500;
+        text-shadow: 0 0 black;
+    }
+
+    .candidate__details .cantainer .box .tabcontent h3 {
+        font-size: 17px;
+        font-weight: 600;
+        color: rgb(0 0 0 / 70%);
+    }
+
+    .candidate__details .cantainer .box.rs__sm .salary__wrap ul.salary span.body {
+        font-size: 14px;
+    }
+
+    body.candidate_details__wrap .actionBtn__wrap .cantainer {
+        margin: -10px auto 0px;
     }
 }
 
