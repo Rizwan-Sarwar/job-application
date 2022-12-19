@@ -503,3 +503,361 @@ body {
     background-color: white;
     color: #15804f;
 }
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* =========================================================================== */
+/* =========================================================================== */
+/* =========================================================================== */
+/* =========================================================================== */
+/* =========================================================================== */
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+/* =========================================================================== */
+/* =========================================================================== */
+/* =========================================================================== */
+/* =========================================================================== */
+/* =========================================================================== */
+
+.candidate__details .cantainer {
+    margin: 0px auto;
+    padding-top: 0px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 10px;
+}
+
+body.candidate_details__wrap {
+    background-color: #e9ecef;
+}
+
+body.candidate_details__wrap .navbar .cantainer {
+    background-color: white;
+}
+
+body.candidate_details__wrap .actionBtn__wrap .cantainer {
+    text-align: right;
+    margin: -25px auto 0px;
+}
+
+body.candidate_details__wrap .actionBtn__wrap .cantainer a.action__btn {
+    text-transform: capitalize;
+    border-radius: 5px;
+    padding: 10px 12px;
+    font-size: 14px;
+    display: inline-block;
+    transition: .2s ease-in-out;
+}
+
+body.candidate_details__wrap .actionBtn__wrap .cantainer a.action__btn.access {
+    background-color: #d7eff9;
+    color: #489baf;
+    border: 1px solid;
+    text-shadow: 0 0 black;
+}
+
+body.candidate_details__wrap .actionBtn__wrap .cantainer a.action__btn.danger {
+    background-color: #f4e2e6;
+    color: #d26b7a;
+    border: 1px solid;
+    text-shadow: 0 0 black;
+    margin: 0px 0px 0px 10px;
+}
+
+
+.candidate__details .cantainer .box .candidate__profile {
+    position: relative;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.candidate__details .cantainer .box .candidate__profile .star__wrap {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: #e9ecef;
+    padding: 3px 5px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.candidate__details .cantainer .box .candidate__profile .star__wrap svg {
+    fill: #fc8b34;
+    width: 10px;
+}
+
+.candidate__details .cantainer .box .candidate__profile .star__wrap span {
+    font-size: 12px;
+    text-shadow: 0 0 black;
+}
+
+.candidate__details .cantainer .box .candidate__profile .image__wrap {
+    width: fit-content;
+    margin: auto;
+    overflow: hidden;
+    padding: 3px;
+    background-color: #fc8b34;
+    border-radius: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.candidate__details .cantainer .box .candidate__profile .image__wrap img {
+    padding: 2px;
+    background-color: white;
+    width: 90px;
+    height: 90px;
+    /* border-radius: 100%; */
+}
+
+.candidate__details .cantainer .box .candidate__profile .name__wrap p {
+    margin: 15px 0px 0px;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    text-shadow: 0 0 black;
+}
+
+.candidate__details .cantainer .box .candidate__profile .job__position p {
+    margin: 5px 0px 0px;
+    color: rgb(0 0 0 / 60%);
+    font-size: 13px;
+}
+
+.candidate__details .cantainer .box .candidate__profile .select__wrap select {
+    margin: 20px 0px 0px;
+    width: 80%;
+    background-color: #15804f;
+    color: white;
+    padding: 0px 5px;
+    height: 40px;
+}
+
+.candidate__details .cantainer .box.rs__sm .candidate__genDetail {
+    background-color: white;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 10px 0px 0px;
+}
+
+.candidate__details .cantainer .box.rs__sm .candidate__genDetail .box {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin: 0px 0px 20px;
+}
+
+.candidate__details .cantainer .box.rs__sm .candidate__genDetail .box .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgreen;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.candidate__details .cantainer .box.rs__sm .candidate__genDetail .box .left svg {
+    fill: #15804f;
+    width: 12px;
+}
+
+.candidate__details .cantainer .box.rs__sm .candidate__genDetail .box .right p.sec__label {
+    font-size: 14px;
+    color: rgb(0 0 0 / 60%);
+    margin: 0px 0px 3px;
+}
+
+.candidate__details .cantainer .box.rs__sm .candidate__genDetail .box .right p.candidate__name_rep {
+    font-size: 14px;
+    color: black;
+}
+
+.candidate__details .cantainer .box.rs__sm .candidate__genDetail .box:last-child {
+    margin: 0px;
+}
+
+.candidate__details .cantainer .box .tab {
+    background-color: white;
+    border-radius: 3px;
+}
+
+.candidate__details .cantainer .box .tab button.active {
+    background-color: rgb(21 128 79 / 10%);
+}
+
+.candidate__details .cantainer .box .tab button {
+    background-color: white;
+    color: rgb(0 0 0 / 50%);
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    transition: unset;
+    padding: 15px 16px;
+}
+
+.candidate__details .cantainer .box.rs__sm .heading__wrap h4 {
+    text-transform: capitalize;
+    color: rgb(0 0 0 / 80%);
+    margin: 10px 0px 10px;
+}
+
+.candidate__details .cantainer .box.rs__sm .salary__wrap ul.salary {
+    border: 1px solid rgb(21 128 79 / 20%);
+    background-color: rgb(144 238 144 / 40%);
+    margin: 0px 0px 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.candidate__details .cantainer .box.rs__sm .salary__wrap ul.salary li::before {
+    content: "\2022";
+    color: #15804f;
+    margin: 0px 10px 0px 0px;
+}
+
+.candidate__details .cantainer .box.rs__sm .salary__wrap ul.salary span.head {
+    color: rgb(0 0 0 / 80%);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.candidate__details .cantainer .box.rs__sm .salary__wrap ul.salary span.body {
+    color: #15804f;
+    font-weight: 600;
+    margin: 5px 0px 0px;
+    display: inline-block;
+}
+
+.candidate__details .cantainer .box .salary__sec {
+    padding: 00px 10px 10px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0px 0px 10px;
+}
+
+.candidate__details .cantainer .box.rs__sm .salary__wrap ul.salary:last-child {
+    margin: 0px;
+}
+
+.candidate__details .cantainer .box .note__sec {
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.candidate__details .cantainer .box.rs__sm .heading__wrap p {
+    font-size: 13px;
+    margin: -8px 0px 15px;
+    color: rgb(0 0 0 / 50%);
+    font-weight: 600;
+}
+
+.candidate__details .cantainer .box .note__sec .note_wrap textarea {
+    padding: 5px;
+    font-size: 13px;
+    width: 100%;
+}
+
+.candidate__details .cantainer .box .note__sec .note_wrap a {
+    color: black;
+    border: 1px solid lightgrey;
+    display: block;
+    padding: 3px 5px 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 6px 0px 0px;
+}
+
+.candidate__details .cantainer .box .tabcontent {
+    background-color: white;
+    border: unset;
+    height: auto;
+}
+
+body.candidate_details__wrap .actionBtn__wrap .cantainer a.action__btn.access:hover {
+    background-color: rgb(190 229 245);
+}
+
+body.candidate_details__wrap .actionBtn__wrap .cantainer a.action__btn.danger:hover {
+    background-color: #f9cfd8;
+}
+
+.candidate__details .cantainer .box.rs__lg {
+    background-color: white;
+}
+
+.candidate__details .cantainer .box .tabcontent .rs__data__wrap {
+    margin: 15px 0px 0px 15px;
+    height: auto;
+}
+
+.rs__data__wrap .pairData .key__wrap p {
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+    text-shadow: 0 0 black;
+    text-transform: capitalize;
+}
+
+.rs__data__wrap .pairData .value__wrap p {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(0 0 0 / 80%);
+    margin: 3px 0px 0px;
+}
+
+.candidate__details .cantainer .box .tabcontent .rs__data__wrap iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+}
+
+.rs__data__wrap .pairData {
+    margin: 10px 0px 0px;
+}
