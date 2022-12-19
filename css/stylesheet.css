@@ -642,11 +642,11 @@ body.candidate_details__wrap .actionBtn__wrap .cantainer a.action__btn.danger {
 }
 
 .candidate__details .cantainer .box .candidate__profile .image__wrap img {
-    padding: 2px;
+    padding: 1px;
     background-color: white;
     width: 90px;
     height: 90px;
-    /* border-radius: 100%; */
+    border-radius: 100%;
 }
 
 .candidate__details .cantainer .box .candidate__profile .name__wrap p {
