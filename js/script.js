@@ -354,11 +354,39 @@ let uploadFiles = (folder, file) => {
         );
     }
     let uniqueID = uuidv4()
-    folder == "applicant_resume" ? applicantData.resumeID = uniqueID : applicantData.pictureID = uniqueID;
-    // applicantData.pictureID = uniqueID;
+    // folder == "applicant_resume" ? applicantData.resumeID = uniqueID : applicantData.pictureID = uniqueID;
+    if (folder == "applicant_resume") {
+        applicantData.resumeID = uniqueID
+        return new Promise((resolve, reject) => {
+            let storageRef = firebase.storage().ref(`${folder}/${uniqueID}`);
+            let uploading = storageRef.put(file)
+            uploading.on('state_changed',
+                (snapshot) => {
+                    switch (snapshot.state) {
+                        case firebase.storage.TaskState.PAUSED:
+                            console.log('Upload is paused');
+                            break;
+                        case firebase.storage.TaskState.RUNNING:
+                            console.log('Upload is running');
+                            break;
+                    }
+                },
+                (error) => {
+                    reject(error)
+                    delete applicantData.pictureID;
+                },
+                () => {
+                    uploading.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                        resolve(downloadURL)
+                    });
+                }
+            );
+        })
+    }
+    applicantData.pictureID = uniqueID
     return new Promise((resolve, reject) => {
         let storageRef = firebase.storage().ref(`${folder}/${uniqueID}`);
-        let uploading = storageRef.put(file)
+        let uploading = storageRef.putString(file, 'data_url')
         uploading.on('state_changed',
             (snapshot) => {
                 switch (snapshot.state) {
@@ -860,12 +888,18 @@ const mainFieldsCheck = (fields, applicantData) => {
         console.log("Some importent fields are empty ://")
     }
     else {
-        debugger
         let resume = document.job__application.resume;
         let picture = document.job__application.picture;
         uploadFiles("applicant_resume", resume.files[0])
         if (picture.value != "") {
-            uploadFiles("applicant_picture", picture.files[0])
+            let canvas = document.createElement("canvas");
+            let ctx = canvas.getContext("2d");
+            let ogImageRatio = applicantPicture.naturalWidth / applicantPicture.naturalHeight;
+            canvas.width = 90
+            canvas.height = Math.floor(90 / ogImageRatio);
+            ctx.drawImage(applicantPicture, 0, 0, canvas.width, canvas.height)
+            let imageURL = canvas.toDataURL("image/jpeg", 1.0);
+            uploadFiles("applicant_picture", imageURL);
         }
         let newMessageRef = messagesRef.push();
         applicantData.id = newMessageRef.key;
@@ -965,3 +999,10 @@ let getDetail = (getID) => {
     localStorage.setItem("candidateID", getID.dataset.id);
     window.location.pathname = "/job-application/candidate_details.html";
 }
+
+let applicantPicture = document.querySelector("#applicantPicture");
+document.getElementsByName("picture")[0].addEventListener("change", (e) => {
+    const file = e.target.files[0]
+    if (!file) return;
+    applicantPicture.src = URL.createObjectURL(file);
+});
